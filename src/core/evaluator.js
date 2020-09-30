@@ -2039,8 +2039,8 @@ class PartialEvaluator {
       textContentItem.textAdvanceScale = scaleCtmX * scaleLineX;
       textContentItem.lastAdvanceWidth = 0;
       textContentItem.lastAdvanceHeight = 0;
-
-      var spaceWidth = (font.spaceWidth / 1000) * textState.fontSize;
+      var fontMinWidth = Array.min.apply(null, font.widths.filter(w => !!w));
+      var spaceWidth = (fontMinWidth / 1000) * textState.fontSize;
       if (spaceWidth) {
         textContentItem.spaceWidth = spaceWidth;
         textContentItem.fakeSpaceMin = spaceWidth * SPACE_FACTOR;
